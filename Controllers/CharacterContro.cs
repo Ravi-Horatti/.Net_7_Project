@@ -7,13 +7,24 @@ namespace New_Project.Controllers
     [Route("api/[controller]")]
     public class CharacterContro : ControllerBase
     {
-        private static Charactere knight = new Charactere();
+        private static List<Charactere> characters = new List<Charactere>()
+        {
+            new Charactere(),
+            new Charactere{Name="SAMMY"}
 
+        };
+
+
+        [HttpGet("GetAll")]
+        public ActionResult<List<Charactere>> Get()
+        {
+            return Ok(characters);
+        }
 
         [HttpGet]
-        public ActionResult<Charactere> Get()
+        public ActionResult<List<Charactere>> GetSingle()
         {
-            return Ok(knight);
+            return Ok(characters[0]);
         }
         
     }
